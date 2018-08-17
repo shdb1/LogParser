@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 from flask import request
 from flask import Response
 from collections import defaultdict
@@ -13,6 +14,10 @@ app = Flask(__name__)
 super_params = ['ERROR', 'WARN']
 exception_params = ['error', 'except', 'fail', 'not found']
 
+# to serve index file on startup
+@app.route("/")
+def appStarter():  
+    return render_template('index.html')
 
 # define rest api path 
 @app.route('/getlogdata')
